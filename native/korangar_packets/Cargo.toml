@@ -1,0 +1,13 @@
+[package]
+name = "korangar_packets"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "korangar_packets"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.37.2"
+ragnarok-packets = { git = "https://github.com/vE5li/korangar", features = ["derive"] }
+ragnarok-bytes = { git = "https://github.com/vE5li/korangar", features = ["derive"] }
