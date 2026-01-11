@@ -40,7 +40,8 @@ defmodule Korangar.MixProject do
     [
       "packets.gen.json": [
         "cmd cargo rustdoc -p ragnarok-packets -- -Z unstable-options --output-format json"
-      ]
+      ],
+      "packets.gen": ["korangar.packets.gen.json"]
     ]
   end
 end
