@@ -15,3 +15,5 @@ ragnarok-bytes = { git = "https://github.com/vE5li/korangar", features = ["deriv
 [build-dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+quote = "1.0.43"
+syn = "2.0.114"
