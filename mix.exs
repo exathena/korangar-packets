@@ -31,7 +31,7 @@ defmodule Korangar.MixProject do
     [
       {:jason, "~> 1.4.4"},
       {:ecto, "~> 3.13.5", optional: true},
-      {:rustler, "~> 0.37.2", github: "rusterlium/rustler", sparse: "rustler_mix", runtime: false}
+      {:rustler, "~> 0.38.0", runtime: false}
     ]
   end
 end
