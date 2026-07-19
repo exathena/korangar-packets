@@ -2,7 +2,7 @@
   description = "Korangar Packets - A Rustler NIF for Elixir to handle Ragnarok Online packets";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     utils.url = "github:numtide/flake-utils";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
@@ -16,8 +16,11 @@
     utils.lib.eachDefaultSystem (system: let
       overlays = [(import rust-overlay)];
       pkgs = (import nixpkgs) {inherit system overlays;};
-      erlang = pkgs.erlang_28;
-      elixir = pkgs.beam.packages.erlang_28.elixir_1_19;
+
+      erlang = pkgs.beam28Packages.erlang;
+      elixir = pkgs.beam28Packages.elixir_1_20;
+      elixir-ls = pkgs.beam28Packages.elixir-ls.override {inherit elixir;};
+
       libraries = with pkgs; [pkg-config];
       rustToolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
       packages = with pkgs; [erlang elixir elixir-ls openssl];
@@ -30,8 +33,6 @@
         RUST_SRC_PATH = pkgs.rustPlatform.rustLibSrc;
 
         shellHook = ''
-          export MIX_HOME=$PWD/.nix-mix
-          export HEX_HOME=$PWD/.nix-hex
           export ERL_AFLAGS="-kernel shell_history enabled"
           export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH
         '';

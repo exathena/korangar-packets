@@ -5,7 +5,7 @@ defmodule Korangar.MixProject do
     [
       app: :korangar,
       version: "0.1.0",
-      elixir: "~> 1.19",
+      elixir: "~> 1.20",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps()
