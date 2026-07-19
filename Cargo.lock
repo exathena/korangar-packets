@@ -78,7 +78,7 @@ dependencies = [
 [[package]]
 name = "ragnarok-bytes"
 version = "0.1.0"
-source = "git+https://github.com/vE5li/korangar#3cf9be937390dbf3a53e237594ccfa8a54e83dff"
+source = "git+https://github.com/vE5li/korangar?rev=f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb#f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb"
 dependencies = [
  "encoding_rs",
  "ragnarok-macros",
@@ -87,7 +87,7 @@ dependencies = [
 [[package]]
 name = "ragnarok-macros"
 version = "0.1.0"
-source = "git+https://github.com/vE5li/korangar#3cf9be937390dbf3a53e237594ccfa8a54e83dff"
+source = "git+https://github.com/vE5li/korangar?rev=f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb#f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -97,7 +97,7 @@ dependencies = [
 [[package]]
 name = "ragnarok-packets"
 version = "0.1.0"
-source = "git+https://github.com/vE5li/korangar#3cf9be937390dbf3a53e237594ccfa8a54e83dff"
+source = "git+https://github.com/vE5li/korangar?rev=f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb#f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb"
 dependencies = [
  "bitflags",
  "ragnarok-bytes",

@@ -9,5 +9,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 rustler = "0.37.2"
-ragnarok-packets = { git = "https://github.com/vE5li/korangar", features = ["derive"] }
-ragnarok-bytes = { git = "https://github.com/vE5li/korangar", features = ["derive"] }
+ragnarok-packets = { git = "https://github.com/vE5li/korangar", rev = "f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb", features = ["derive"] }
+ragnarok-bytes = { git = "https://github.com/vE5li/korangar", rev = "f06ad6d16519f0d2c28711a30f7d68f12c1b3cfb", features = ["derive"] }
