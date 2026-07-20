@@ -1,9 +1,9 @@
-defmodule Korangar.MixProject do
+defmodule KorangarPackets.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :korangar,
+      app: :korangar_packets,
       version: "0.1.0",
       elixir: "~> 1.20",
       elixirc_paths: elixirc_paths(Mix.env()),
