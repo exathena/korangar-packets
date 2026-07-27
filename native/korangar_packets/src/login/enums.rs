@@ -1,6 +1,6 @@
 use ragnarok_packets::*;
 
-#[derive(Debug, Clone, rustler::NifTaggedEnum)]
+#[derive(Debug, Clone, rustler::NifUnitEnum)]
 pub enum NifSex {
     Female,
     Male,
@@ -30,7 +30,7 @@ impl From<&NifSex> for Sex {
     }
 }
 
-#[derive(Debug, Clone, rustler::NifTaggedEnum)]
+#[derive(Debug, Clone, rustler::NifUnitEnum)]
 pub enum NifAuthenticationFailedReason {
     ServerClosed,
     AlreadyLoggedIn,
@@ -57,7 +57,7 @@ impl From<&NifAuthenticationFailedReason> for LoginFailedReason {
     }
 }
 
-#[derive(Debug, Clone, rustler::NifTaggedEnum)]
+#[derive(Debug, Clone, rustler::NifUnitEnum)]
 pub enum NifLoginFailedReason {
     UnregisteredId,
     IncorrectPassword,

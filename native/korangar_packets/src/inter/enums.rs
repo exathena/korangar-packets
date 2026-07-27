@@ -1,6 +1,6 @@
 use ragnarok_packets::*;
 
-#[derive(Debug, Clone, rustler::NifTaggedEnum)]
+#[derive(Debug, Clone, rustler::NifUnitEnum)]
 pub enum NifAuthenticationFailedReason {
     ServerClosed,
     AlreadyLoggedIn,
