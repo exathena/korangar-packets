@@ -24,3 +24,4 @@ tmp/
 
 # Rustler
 target/
+priv/native/*.so

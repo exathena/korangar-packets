@@ -1,15 +1,14 @@
-defmodule Korangar.MixProject do
+defmodule KorangarPackets.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :korangar,
+      app: :korangar_packets,
       version: "0.1.0",
-      elixir: "~> 1.19",
+      elixir: "~> 1.20",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      aliases: aliases()
+      deps: deps()
     ]
   end
 
@@ -32,16 +31,7 @@ defmodule Korangar.MixProject do
     [
       {:jason, "~> 1.4.4"},
       {:ecto, "~> 3.13.5", optional: true},
-      {:rustler, "~> 0.37.2", github: "rusterlium/rustler", sparse: "rustler_mix", runtime: false}
-    ]
-  end
-
-  defp aliases do
-    [
-      "packets.gen.json": [
-        "cmd cargo rustdoc -p ragnarok-packets -- -Z unstable-options --output-format json"
-      ],
-      "packets.gen": ["korangar.packets.gen.json"]
+      {:rustler, "~> 0.38.0", runtime: false}
     ]
   end
 end
