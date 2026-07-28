@@ -27,21 +27,11 @@ defmodule Korangar.CharacterServerInformation do
   end
 
   @doc """
-  Generates a new struct from given map of attributes.
-  """
-  @spec new(map()) :: t()
-  def new(attrs) do
-    attrs
-    |> changeset()
-    |> apply_action!(:packet)
-  end
-
-  @doc """
   Generates a new changeset from given map of attributes.
   """
-  @spec changeset(map()) :: Ecto.Changeset.t()
-  def changeset(attrs \\ %{}) do
-    %__MODULE__{}
+  @spec changeset(t(), map()) :: Ecto.Changeset.t()
+  def changeset(character_server_information, attrs \\ %{}) do
+    character_server_information
     |> cast(attrs, [
       :server_ip,
       :server_port,
