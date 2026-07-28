@@ -12,7 +12,7 @@ pub const LOGIN_PACKETS: [PacketHeader; 5] = [
 
 pub const INTER_PACKETS: [PacketHeader; 1] = [LoginFailedPacket::HEADER];
 
-#[derive(Debug, Clone, rustler::NifTaggedEnum)]
+#[derive(Debug, Clone, rustler::NifUntaggedEnum)]
 pub enum RagnarokPacket {
     LoginServer(super::login::RagnarokLoginPacket),
     InterServer(super::inter::RagnarokInterPacket),
