@@ -6,12 +6,6 @@ defmodule Korangar.LoginServerKeepalivePacket do
   use Ecto.Schema
   import Ecto.Changeset
 
-  defimpl Korangar.Packet do
-    def server_packet(packet) do
-      {:login_server, packet}
-    end
-  end
-
   @type t :: %__MODULE__{user_id: [pos_integer()]}
 
   @primary_key false

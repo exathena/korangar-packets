@@ -5,12 +5,6 @@ defmodule Korangar.AuthenticationFailedPacket do
   use Ecto.Schema
   import Ecto.Changeset
 
-  defimpl Korangar.Packet do
-    def server_packet(packet) do
-      {:inter_server, packet}
-    end
-  end
-
   @typedoc """
   The possible reasons of a failed authentication.
   """

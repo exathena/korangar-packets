@@ -5,12 +5,6 @@ defmodule Korangar.CharacterServerInformation do
   use Ecto.Schema
   import Ecto.Changeset
 
-  defimpl Korangar.Packet do
-    def server_packet(packet) do
-      {:login_server, packet}
-    end
-  end
-
   @type t :: %__MODULE__{
           server_ip: [non_neg_integer()],
           server_port: non_neg_integer(),

@@ -18,12 +18,6 @@ defmodule Korangar.LoginServerLoginPacket do
   use Ecto.Schema
   import Ecto.Changeset
 
-  defimpl Korangar.Packet do
-    def server_packet(packet) do
-      {:login_server, packet}
-    end
-  end
-
   @type t :: %__MODULE__{
           name: String.t(),
           password: String.t(),
