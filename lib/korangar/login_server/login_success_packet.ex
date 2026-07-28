@@ -9,6 +9,12 @@ defmodule Korangar.LoginServerLoginSuccessPacket do
   use Ecto.Schema
   import Ecto.Changeset
 
+  defimpl Korangar.Packet do
+    def server_packet(packet) do
+      {:login_server, packet}
+    end
+  end
+
   @typedoc """
   The possible sex values.
   """

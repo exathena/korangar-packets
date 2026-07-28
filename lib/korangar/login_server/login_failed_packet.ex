@@ -5,6 +5,12 @@ defmodule Korangar.LoginFailedPacket do
   use Ecto.Schema
   import Ecto.Changeset
 
+  defimpl Korangar.Packet do
+    def server_packet(packet) do
+      {:login_server, packet}
+    end
+  end
+
   @typedoc """
   The possible reasons of a failed login.
   """
