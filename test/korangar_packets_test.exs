@@ -5,17 +5,17 @@ defmodule KorangarPacketsTest do
            0, 0, 0, 0, 0, 49, 50, 51, 52, 53, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
            0, 0, 22>>
 
-  @packet {:login_server,
-           %Korangar.LoginServerLoginPacket{
-             client_type: 22,
-             name: "aledsz",
-             password: "123456",
-             version: [1, 2, 3, 4]
-           }}
-
   describe "decode_packet/1" do
     test "decodes the login packet" do
-      assert KorangarPackets.decode_packet(@bytes) == {:ok, @packet}
+      packet =
+        Korangar.LoginServerLoginPacket.new(%{
+          client_type: 22,
+          name: "aledsz",
+          password: "123456",
+          version: [1, 2, 3, 4]
+        })
+
+      assert KorangarPackets.decode_packet(@bytes) == {:ok, Korangar.Packet.server_packet(packet)}
     end
 
     test "returns error with invalid packet header" do
@@ -25,6 +25,15 @@ defmodule KorangarPacketsTest do
   end
 
   test "encode_packet/1 encodes the login packet" do
-    assert KorangarPackets.encode_packet(@packet) == {:ok, @bytes}
+    packet =
+      Korangar.LoginServerLoginPacket.new(%{
+        client_type: 22,
+        name: "aledsz",
+        password: "123456",
+        version: [1, 2, 3, 4]
+      })
+
+    server_packet = Korangar.Packet.server_packet(packet)
+    assert KorangarPackets.encode_packet(server_packet) == {:ok, @bytes}
   end
 end
