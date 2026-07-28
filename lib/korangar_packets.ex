@@ -7,7 +7,7 @@ defmodule KorangarPackets do
   @typedoc """
   The server-packet type.
   """
-  @type server_packet :: {:login_server, struct()}
+  @type server_packet :: {:login_server | :inter_server, struct()}
 
   @doc """
   Decodes the given binary into a "server-packet" tuple.
