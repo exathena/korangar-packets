@@ -73,9 +73,6 @@ pub struct NifLoginServerLoginSuccessPacket {
     pub login_id1: u32,
     pub account_id: u32,
     pub login_id2: u32,
-    pub ip_address: u32,
-    pub name: Vec<u8>,
-    pub unknown: u16,
     pub sex: super::enums::NifSex,
     pub auth_token: Vec<u8>,
     pub character_server_information: Vec<NifCharacterServerInformation>,
@@ -93,9 +90,6 @@ impl From<&LoginServerLoginSuccessPacket> for NifLoginServerLoginSuccessPacket {
             login_id1: value.login_id1,
             account_id: value.account_id.0,
             login_id2: value.login_id2,
-            ip_address: value.ip_address,
-            name: value.name.to_vec(),
-            unknown: value.unknown,
             sex: super::enums::NifSex::from(&value.sex),
             auth_token: value.auth_token.0.to_vec(),
             character_server_information,
@@ -105,9 +99,6 @@ impl From<&LoginServerLoginSuccessPacket> for NifLoginServerLoginSuccessPacket {
 
 impl From<&NifLoginServerLoginSuccessPacket> for LoginServerLoginSuccessPacket {
     fn from(value: &NifLoginServerLoginSuccessPacket) -> Self {
-        let mut name = [0u8; 24];
-        name.copy_from_slice(&value.name[0..24]);
-
         let mut auth_token = [0u8; 17];
         auth_token.copy_from_slice(&value.auth_token[0..17]);
 
@@ -121,9 +112,9 @@ impl From<&NifLoginServerLoginSuccessPacket> for LoginServerLoginSuccessPacket {
             login_id1: value.login_id1,
             account_id: AccountId(value.account_id),
             login_id2: value.login_id2,
-            ip_address: value.ip_address,
-            name,
-            unknown: value.unknown,
+            ip_address: Default::default(),
+            name: Default::default(),
+            unknown: Default::default(),
             sex: Sex::from(&value.sex),
             auth_token: AuthToken(auth_token),
             character_server_information,
