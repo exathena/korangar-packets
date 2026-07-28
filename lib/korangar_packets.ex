@@ -4,15 +4,25 @@ defmodule KorangarPackets do
     crate: :korangar_packets,
     skip_compilation?: false
 
-  @doc """
-  Decodes the given binary into a "server-packet" tuple.
+  @typedoc """
+  The Korangar Packet type.
   """
-  @spec decode_packet(binary()) :: {:ok, Korangar.Packet.server_packet()} | {:error, String.t()}
+  @type packet ::
+          Korangar.LoginServerLoginPacket.t()
+          | Korangar.LoginServerLoginSuccessPacket.t()
+          | Korangar.LoginServerKeepalivePacket.t()
+          | Korangar.LoginFailedPacket.t()
+          | Korangar.AuthenticationFailedPacket.t()
+
+  @doc """
+  Decodes the given binary into a packet struct.
+  """
+  @spec decode_packet(binary()) :: {:ok, packet()} | {:error, String.t()}
   def decode_packet(_packet_bytes), do: :erlang.nif_error(:nif_not_loaded)
 
   @doc """
-  Encodes the given "server-packet" tuple into a binary.
+  Encodes the given packet struct into a binary.
   """
-  @spec encode_packet(Korangar.Packet.server_packet()) :: {:ok, binary()} | {:error, String.t()}
+  @spec encode_packet(packet()) :: {:ok, binary()} | {:error, String.t()}
   def encode_packet(_server_packet_tuple), do: :erlang.nif_error(:nif_not_loaded)
 end
