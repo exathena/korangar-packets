@@ -34,7 +34,7 @@ defmodule Korangar.LoginServerLoginSuccessPacket do
       both
       server
     ]a
-    field :auth_token, :binary
+    field :auth_token, {:array, :integer}
 
     embeds_many :character_server_information, Korangar.CharacterServerInformation
   end
@@ -58,5 +58,6 @@ defmodule Korangar.LoginServerLoginSuccessPacket do
     |> cast(attrs, [:login_id1, :account_id, :login_id2, :sex, :auth_token])
     |> cast_embed(:character_server_information)
     |> validate_required([:login_id1, :account_id, :login_id2, :sex, :auth_token])
+    |> validate_length(:auth_token, is: 17)
   end
 end
