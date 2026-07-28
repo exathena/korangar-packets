@@ -6,11 +6,11 @@ defmodule Korangar.LoginServerKeepalivePacket do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @type t :: %__MODULE__{user_id: pos_integer()}
+  @type t :: %__MODULE__{user_id: [pos_integer()]}
 
   @primary_key false
   embedded_schema do
-    field :user_id, :integer
+    field :user_id, {:array, :integer}
   end
 
   @doc """
@@ -31,5 +31,6 @@ defmodule Korangar.LoginServerKeepalivePacket do
     %__MODULE__{}
     |> cast(attrs, [:user_id])
     |> validate_required([:user_id])
+    |> validate_length(:user_id, is: 24)
   end
 end
