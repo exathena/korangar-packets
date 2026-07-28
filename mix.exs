@@ -29,8 +29,8 @@ defmodule KorangarPackets.MixProject do
 
   defp deps do
     [
-      {:jason, "~> 1.4.4"},
-      {:ecto, "~> 3.13.5", optional: true},
+      {:jason, "~> 1.4.5", optional: true},
+      {:ecto, "~> 3.14.1", optional: true},
       {:rustler, "~> 0.38.0", runtime: false}
     ]
   end
