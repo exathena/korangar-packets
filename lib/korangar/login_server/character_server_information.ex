@@ -48,7 +48,7 @@ defmodule Korangar.CharacterServerInformation do
       :server_name,
       :server_type,
       :user_count,
-      :display_name,
+      :display_new,
       :unknown
     ])
     |> validate_required([
@@ -57,7 +57,7 @@ defmodule Korangar.CharacterServerInformation do
       :server_name,
       :server_type,
       :user_count,
-      :display_name,
+      :display_new,
       :unknown
     ])
     |> validate_length(:server_ip, is: 4)
