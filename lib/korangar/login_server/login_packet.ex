@@ -1,6 +1,9 @@
 defmodule Korangar.LoginServerLoginPacket do
   @moduledoc """
-  The login request packet.
+  The login request packet sent by the client to the login server.
+
+  The very first packet sent when logging in, it is sent after the user has
+  entered email and password.
   """
   use Ecto.Schema
   import Ecto.Changeset

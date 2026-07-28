@@ -1,6 +1,10 @@
 defmodule Korangar.LoginServerLoginSuccessPacket do
   @moduledoc """
-  The logged successfully struct.
+  The logged successfully packet sent by the login server as a response to [Korangar.LoginServerLoginPacket]
+  succeeding.
+
+  After receiving this packet, the client will connect to one of
+  the character servers provided by this packet.
   """
   use Ecto.Schema
   import Ecto.Changeset

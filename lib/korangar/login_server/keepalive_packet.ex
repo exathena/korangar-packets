@@ -1,6 +1,7 @@
 defmodule Korangar.LoginServerKeepalivePacket do
   @moduledoc """
-  The logged user ping packet.
+  The logged user ping packet sent by the client to the login server every 60 seconds to keep the
+  connection alive.
   """
   use Ecto.Schema
   import Ecto.Changeset
