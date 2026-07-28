@@ -29,7 +29,7 @@ pub(crate) fn to_bytes<T: Packet + 'static>(
 
     match packet.packet_to_bytes(writer) {
         Ok(usize) => Ok(usize),
-        Err(error) => Err(format!("Failed to parse packet: {:?}", error)),
+        Err(error) => Err(format!("Failed to parse packet to bytes: {:?}", error)),
     }
 }
 
@@ -38,6 +38,6 @@ pub(crate) fn from_bytes<T: Packet + 'static>(
 ) -> Result<Box<dyn Any>, String> {
     match T::payload_from_bytes(reader) {
         Ok(packet) => Ok(Box::new(packet)),
-        Err(error) => Err(format!("Failed to parse packet: {:?}", error)),
+        Err(error) => Err(format!("Failed to parse packet from bytes: {:?}", error)),
     }
 }
