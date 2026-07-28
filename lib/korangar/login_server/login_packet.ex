@@ -4,6 +4,16 @@ defmodule Korangar.LoginServerLoginPacket do
 
   The very first packet sent when logging in, it is sent after the user has
   entered email and password.
+
+  ## Packet notation
+
+  0064 <client version>.L <user name>.24B <user password>.24B <client type>.B (PACKET_CA_LOGIN)
+
+      # 0x64 [1, 2, 3, 4] "aledsz" "123456" 22
+
+      <<100, 0, 1, 2, 3, 4, 97, 108, 101, 100, 115, 122, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 49, 50, 51, 52, 53, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 22>>
   """
   use Ecto.Schema
   import Ecto.Changeset
