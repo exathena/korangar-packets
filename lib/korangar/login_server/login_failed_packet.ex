@@ -32,7 +32,7 @@ defmodule Korangar.LoginFailedPacket do
           | :deleting_spouse_character
           | :unknown_error
 
-  @type t :: %__MODULE__{reason: reason()}
+  @type t :: %__MODULE__{reason: reason(), date: String.t()}
 
   @primary_key false
   embedded_schema do
@@ -60,14 +60,15 @@ defmodule Korangar.LoginFailedPacket do
       deleting_spouse_character
       unknown_error
     ]a
+    field :date, :string, default: ""
   end
 
   @doc """
   Generates a new struct from given reason.
   """
   @spec new(reason()) :: t()
-  def new(reason) do
-    %{reason: reason}
+  def new(attrs) do
+    attrs
     |> changeset()
     |> apply_action!(:packet)
   end
@@ -78,7 +79,18 @@ defmodule Korangar.LoginFailedPacket do
   @spec changeset(map()) :: Ecto.Changeset.t()
   def changeset(attrs \\ %{}) do
     %__MODULE__{}
-    |> cast(attrs, [:reason])
+    |> cast(attrs, [:reason, :date])
     |> validate_required([:reason])
+    |> validate_reason()
+  end
+
+  defp validate_reason(changeset) do
+    if get_field(changeset, :reason) in ~w[login_prohibited_until login_information_remains]a do
+      changeset
+      |> validate_required([:date])
+      |> validate_length(:date, is: 20)
+    else
+      changeset
+    end
   end
 end

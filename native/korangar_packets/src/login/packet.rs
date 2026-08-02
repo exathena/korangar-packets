@@ -172,12 +172,14 @@ impl From<&NifCharacterServerInformation> for CharacterServerInformation {
 #[module = "Korangar.LoginFailedPacket"]
 pub struct NifLoginFailedPacket {
     pub reason: super::enums::NifLoginFailedReason,
+    pub date: String,
 }
 
 impl From<&LoginFailedPacket2> for NifLoginFailedPacket {
     fn from(value: &LoginFailedPacket2) -> Self {
         Self {
             reason: super::enums::NifLoginFailedReason::from(&value.reason),
+            date: value.date.clone(),
         }
     }
 }
@@ -186,6 +188,7 @@ impl From<&NifLoginFailedPacket> for LoginFailedPacket2 {
     fn from(value: &NifLoginFailedPacket) -> Self {
         Self {
             reason: LoginFailedReason2::from(&value.reason),
+            date: value.date.clone(),
         }
     }
 }
