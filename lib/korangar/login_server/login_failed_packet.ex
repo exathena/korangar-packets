@@ -18,6 +18,19 @@ defmodule Korangar.LoginFailedPacket do
           | :login_prohibited_until
           | :server_full
           | :company_account_limit_reached
+          | :banned_by_dba_team
+          | :unconfirmed_email
+          | :banned_by_gm_team
+          | :temporary_ban_for_database_work
+          | :self_locked
+          | :not_permitted_group
+          | :account_id_erased
+          | :login_information_remains
+          | :locked_for_hacking_investigation
+          | :temporary_locked_for_bug_investigation
+          | :deleting_character
+          | :deleting_spouse_character
+          | :unknown_error
 
   @type t :: %__MODULE__{reason: reason()}
 
@@ -33,6 +46,19 @@ defmodule Korangar.LoginFailedPacket do
       login_prohibited_until
       server_full
       company_account_limit_reached
+      unconfirmed_email
+      banned_by_dba_team
+      banned_by_gm_team
+      temporary_ban_for_database_work
+      self_locked
+      not_permitted_group
+      account_id_erased
+      login_information_remains
+      locked_for_hacking_investigation
+      temporary_locked_for_bug_investigation
+      deleting_character
+      deleting_spouse_character
+      unknown_error
     ]a
   end
 
