@@ -18,11 +18,11 @@ defmodule KorangarPackets do
   Decodes the given binary into a packet struct.
   """
   @spec decode_packet(binary()) :: {:ok, packet()} | {:error, String.t()}
-  def decode_packet(_packet_bytes), do: :erlang.nif_error(:nif_not_loaded)
+  def decode_packet(_bytes), do: :erlang.nif_error(:nif_not_loaded)
 
   @doc """
   Encodes the given packet struct into a binary.
   """
   @spec encode_packet(packet()) :: {:ok, binary()} | {:error, String.t()}
-  def encode_packet(_server_packet_tuple), do: :erlang.nif_error(:nif_not_loaded)
+  def encode_packet(_packet), do: :erlang.nif_error(:nif_not_loaded)
 end

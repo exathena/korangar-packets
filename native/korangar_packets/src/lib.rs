@@ -8,9 +8,9 @@ use rustler::{Binary, Env, NewBinary};
 
 use self::packet::RagnarokPacket;
 
-/// Decode given raw bytes to `Packet`.
+/// Decodes given raw bytes to `Packet`.
 ///
-/// Returns `{:ok, {atom(), Packet.t()}}` or `{:error, term()}`.
+/// Returns `{:ok, Packet.t()}` or `{:error, term()}`.
 #[rustler::nif]
 fn decode_packet<'a>(bytes: Binary<'a>) -> Result<RagnarokPacket, String> {
     let mut reader = ragnarok_bytes::ByteReader::without_metadata(&bytes);
@@ -33,7 +33,7 @@ fn decode_packet<'a>(bytes: Binary<'a>) -> Result<RagnarokPacket, String> {
     Err(format!("Unknown packet header: {:#04x}", header.0))
 }
 
-/// Encode the given `Packet` to raw bytes.
+/// Encodes the given `Packet` to raw bytes.
 ///
 /// Returns `{:ok, binary()}` or `{:error, term()}`.
 #[rustler::nif]
