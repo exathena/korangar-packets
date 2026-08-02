@@ -38,7 +38,7 @@ fn decode_packet<'a>(bytes: Binary<'a>) -> Result<RagnarokPacket, String> {
 /// Returns `{:ok, binary()}` or `{:error, term()}`.
 #[rustler::nif]
 fn encode_packet<'a>(env: Env<'a>, packet: RagnarokPacket) -> Result<Binary<'a>, String> {
-    let mut writer = ragnarok_bytes::ByteWriter::new();
+    let mut writer = ragnarok_bytes::ByteWriter::with_encoding(ragnarok_bytes::encoding::UTF_8);
 
     let size = match packet {
         RagnarokPacket::LoginServer(login) => login::nif_to_bytes(&login, &mut writer)?,
