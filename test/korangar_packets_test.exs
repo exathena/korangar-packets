@@ -4,7 +4,9 @@ defmodule KorangarPacketsTest do
 
   test "encodes and decodes the packet" do
     packet = packet_for(:login_server_login)
+
     assert {:ok, bytes} = KorangarPackets.encode_packet(packet)
+    assert {:ok, 0x0064} = KorangarPackets.fetch_header(bytes)
     assert KorangarPackets.decode_packet(bytes) == {:ok, packet}
   end
 

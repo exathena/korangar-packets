@@ -8,6 +8,19 @@ use rustler::{Binary, Env, NewBinary};
 
 use self::packet::RagnarokPacket;
 
+/// Gets the header from given raw bytes.
+///
+/// Returns `{:ok, pos_integer()}` or `{:error, term()}`.
+#[rustler::nif]
+fn fetch_header<'a>(bytes: Binary<'a>) -> Result<u16, String> {
+    let mut reader = ragnarok_bytes::ByteReader::without_metadata(&bytes);
+
+    match PacketHeader::from_bytes(&mut reader) {
+        Ok(header) => Ok(header.0),
+        Err(error) => return Err(format!("Failed to parse packet header: {:?}", error)),
+    }
+}
+
 /// Decodes given raw bytes to `Packet`.
 ///
 /// Returns `{:ok, Packet.t()}` or `{:error, term()}`.
